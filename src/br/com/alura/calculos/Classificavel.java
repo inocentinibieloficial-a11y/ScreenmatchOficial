@@ -1,5 +1,5 @@
 package br.com.alura.calculos;
 
-public interface classicavel {
+public interface Classificavel {
     int getClassificacao();
 }
