@@ -1,30 +1,31 @@
-public class Filme {
-    String nome;
-    int anoDeLancamento;
-    boolean incluidoNoPlano;
-    private double somaDasAvaliacoes;
-    private  int totalAvaliacao;
-    int duracaoEmMinutos;
+package br.com.alura.screenmatchoficial.modelos;
 
-    public int getTotalAvaliacao(){
-        return totalAvaliacao;
-    }
+import br.com.alura.calculos.Classificavel;
 
-    public void exibrFichaTecnica(){
-        System.out.println("Nome desse filme: " + nome);
-        System.out.println("Ano do lançamento : " + anoDeLancamento);
-        System.out.println("DuraçÄo do filme  : " + duracaoEmMinutos);
-    }
+public class Filme extends Titulo implements Classificavel {
 
-    public void avalia(double nota){
-        somaDasAvaliacoes += nota;
-        totalAvaliacao++;
+    private String diretor ;
 
-    }
-
-    public double pegaMedia(){
-        return somaDasAvaliacoes / totalAvaliacao;
+    public Filme(String nome, int anoDeLancamento) {
+        super(nome, anoDeLancamento);
     }
 
 
+    public String getDiretor() {
+        return diretor;
+    }
+
+    public void setDiretor(String diretor) {
+        this.diretor = diretor;
+    }
+
+    @Override
+    public int getClassificacao() {
+        return (int)pegaMedia()/2;
+    }
+
+    @Override
+    public String toString() {
+        return "Filmes: " + this.getNome() + "(" + this.getAnoDeLancamento() + ")";
+    }
 }
